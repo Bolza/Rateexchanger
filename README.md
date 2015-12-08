@@ -1,6 +1,12 @@
-# ratexchanger
+# Ratexchanger
 
+Simple Angular app to track currency exchange rates.
 
+Mostly an experiment to try out D3/C3.
+
+Using [Fixer.io](http://fixer.io/) APIs to take currency rate exchange history.
+
+Using [C3js](http://c3js.org/) to draw the chart.
 
 ## Prerequisites
 
