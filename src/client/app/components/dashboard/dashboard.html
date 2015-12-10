@@ -1,10 +1,12 @@
 <h1>Exchange rate against {{vm.currentBase}}</h1>
 <h4>In the last 12 Months</h4>
 <div class="btn-group allcurrencies">
-    <h5>Currencies for comparison</h5>
+    <h5>Select currencies to visualize. Hold to compare against.</h5>
+    <label class="btn btn-success">{{vm.currentBase}}</label>
     <label class="btn btn-primary" uib-btn-checkbox
         ng-repeat="(curName, curSel) in vm.allCurrencies"
         ng-model="vm.allCurrencies[curName]"
+        on-long-tap="vm.selectBase(curName)"
         ng-click="vm.onCurrencySelected(curName)">{{curName}}</label>
 </div>
 

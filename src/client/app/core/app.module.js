@@ -4,6 +4,7 @@
     angular.module('app', [
         'app.dashboard',
         'app.chart',
+        'app.utils',
         'ngResource',
         'ui.bootstrap',
         'ui.router'

@@ -12,6 +12,7 @@
         var selectedCurrencies = ['GBP', 'USD'];
         vm.allCurrencies = {};
         vm.currentBase = 'EUR'
+        vm.selectBase = selectBase;
         vm.onCurrencySelected = onCurrencySelected;
 
         function activate() {
@@ -38,7 +39,10 @@
 
             vm.currentData = chartData;
         }
-
+        function selectBase(name) {
+            vm.currentBase = name;
+            activate();
+        }
         function onCurrencySelected(name) {
             var selections = [];
             for (var k in vm.allCurrencies) {
