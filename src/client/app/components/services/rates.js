@@ -8,7 +8,6 @@
     /* @ngInject */
     // factory.$inject = ['$resource'];
     function factory($resource, $q) {
-        // var url = 'http://api.fixer.io/latest?base=USD';
         var config = {
             base: 'EUR',
             currencies: ['GBP'],
@@ -16,7 +15,7 @@
         }
         var url = 'http://api.fixer.io/:date?base=:base&symbols=:currencies';
         var please = $resource(url);
-        var defer = $q.defer();
+        var defer;
         var results = [];
         var errors = [];
 
@@ -35,6 +34,7 @@
             config.base = base;
         }
         function getRates() {
+            defer = $q.defer();
             for (var i = config.dataLength; i > 0; i--) {
                 var d = new Date();
                 d.setMonth(d.getMonth() - i);

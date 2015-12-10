@@ -17,6 +17,12 @@
                     if (!newData) return;
                     c3.generate({
                         'bindto': element[0],
+                        'padding': {
+                            top: 40,
+                            // right: 100,
+                            bottom: 40,
+                            // left: 100,
+                        },
                         'axis': {
                             'x': {
                                 type : 'timeseries',

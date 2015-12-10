@@ -1,3 +1,15 @@
 <h1>Exchange rate against {{vm.currentBase}}</h1>
-<h3>In the last 12 Months</h3>
-<chart id="chart" chart-data="vm.currentData">caca </chart>
+<h4>In the last 12 Months</h4>
+<div class="btn-group allcurrencies">
+    <h5>Currencies for comparison</h5>
+    <label class="btn btn-primary" uib-btn-checkbox
+        ng-repeat="(curName, curSel) in vm.allCurrencies"
+        ng-model="vm.allCurrencies[curName]"
+        ng-click="vm.onCurrencySelected(curName)">{{curName}}</label>
+</div>
+
+<chart id="chart" chart-data="vm.currentData"></chart>
+
+<style media="screen">
+
+</style>

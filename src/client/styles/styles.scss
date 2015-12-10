@@ -1,5 +1,18 @@
+@import "src/client/styles/_bootstrap.scss";
+
+h4 {
+    margin-top: 5px;
+    color: #666;
+}
+h5  {
+    margin-bottom: 0;
+    color: #fff;
+    padding: 10px;
+    background: $brand-primary;
+}
+
 /*
- * Bullseye app main stylesheet imports
+ * main stylesheet imports
  * (Do not change the load order below)
  */
 

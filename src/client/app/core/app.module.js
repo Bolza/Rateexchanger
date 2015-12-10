@@ -5,6 +5,7 @@
         'app.dashboard',
         'app.chart',
         'ngResource',
+        'ui.bootstrap',
         'ui.router'
     ])
     .config(appConfig)
