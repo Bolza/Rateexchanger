@@ -5,6 +5,31 @@
         .module('app.chart', [])
         .directive('chart', dirFunc);
     /* @ngInject */
+
+    function getChartConfig(newData) {
+        return {
+            'data': newData,
+            'padding': {
+                top: 40, bottom: 40,
+            },
+            'axis': {
+                'x': {
+                    type : 'timeseries',
+                    tick : { format : "%Y-%m" }
+                }
+            },
+        }
+    }
+
+    function difference(base, cmp) {
+        var old = base.keys.value;
+        var young = cmp.keys.value;
+        var removed = _.filter(old, function(e) {
+            return young.indexOf(e) === -1;
+        });
+        return removed;
+    }
+
     function dirFunc($compile) {
         return {
             scope: {
@@ -13,26 +38,17 @@
             restrict: 'E',
             template: '',
             link: function(scope, element, attrs) {
-                scope.$watch('chartData', function(newData) {
+                var chart;
+                scope.$watch('chartData', function(newData, oldData) {
                     if (!newData) return;
-                    c3.generate({
-                        'bindto': element[0],
-                        'padding': {
-                            top: 40,
-                            // right: 100,
-                            bottom: 40,
-                            // left: 100,
-                        },
-                        'axis': {
-                            'x': {
-                                type : 'timeseries',
-                                tick : {
-                                  format : "%Y-%m"
-                                }
-                            }
-                        },
-                        'data': newData
-                    });
+                    if (!chart) {
+                        chart = c3.generate(getChartConfig(newData));
+                    }
+                    else {
+                        var removed = difference(oldData, newData);
+                        newData.unload = removed;
+                        chart.load(newData);
+                    }
                 });
             }
         };
