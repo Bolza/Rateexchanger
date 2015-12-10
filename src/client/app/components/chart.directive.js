@@ -16,6 +16,9 @@
                 'x': {
                     type : 'timeseries',
                     tick : { format : "%Y-%m" }
+                },
+                'y': {
+                    tick : { format : d3.format('.2g')}
                 }
             },
         }

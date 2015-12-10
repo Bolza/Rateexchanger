@@ -8,7 +8,8 @@
     function dirFunc($timeout) {
         return {
             scope: {
-                onLongTap: '&'
+                onLongTap: '&',
+                onTouchEnd: '&'
             },
             restrict: 'A',
             link: function($scope, $elm, $attrs) {
@@ -18,7 +19,7 @@
     				$timeout(function() {
     					if ($scope.longTap) {
     						$scope.$apply(function() {
-    							$scope.onLongTap.apply(this)
+    							$scope.onLongTap.apply(this);
     						});
     					}
     				}, 600);
@@ -28,7 +29,7 @@
     				$scope.longTap = false;
     				if ($attrs.onTouchEnd) {
     					$scope.$apply(function() {
-    						$scope.$eval($attrs.onTouchEnd)
+    						$scope.onTouchEnd.apply(this);
     					});
     				}
     			});
